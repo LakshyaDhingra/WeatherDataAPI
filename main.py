@@ -8,12 +8,19 @@ app = Flask(__name__)
 def home():
     return render_template("home.html")
 
+@app.route("/tutorial/")
+def tutorial():
+    return render_template("tutorial.html")
+
+@app.route("/about/")
+def about():
+    return render_template("about.html")
 
 @app.route("/api/v1/<station>/<date>")
-def about(station, date):
+def data(station, date):
     temperature = 25
     return {"station": station, "date": date, "temperature": temperature}
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port = 5001)
